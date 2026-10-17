@@ -10,7 +10,7 @@
     "icon": "electron scripts/make-icon.js",
     "fetch-xray": "node scripts/fetch-xray.js",
     "test": "node scripts/selftest.js",
-    "dist": "npm run icon && npm run fetch-xray && electron-builder --win --x64"
+    "dist": "npm run icon && npm run fetch-xray && electron-builder --win --x64 --publish never"
   },
   "devDependencies": {
     "electron": "33.2.1",
@@ -20,10 +20,43 @@
     "appId": "app.nova.connect",
     "productName": "Nova Connect",
     "asar": true,
-    "files": ["src/**", "assets/**", "package.json"],
-    "extraResources": [{ "from": "resources/xray", "to": "xray" }],
-    "win": { "target": [{ "target": "nsis", "arch": ["x64"] }, { "target": "portable", "arch": ["x64"] }], "icon": "assets/icon.png", "requestedExecutionLevel": "asInvoker" },
-    "nsis": { "oneClick": true, "perMachine": false, "deleteAppDataOnUninstall": false },
-    "artifactName": "NovaConnect-${version}-${arch}.${ext}"
+    "files": [
+      "src/**",
+      "assets/**",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "resources/xray",
+        "to": "xray"
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "assets/icon.png",
+      "requestedExecutionLevel": "asInvoker"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "deleteAppDataOnUninstall": false,
+      "artifactName": "NovaConnect-Setup-${version}.${ext}"
+    },
+    "portable": {
+      "artifactName": "NovaConnect-Portable-${version}.${ext}"
+    }
   }
 }
