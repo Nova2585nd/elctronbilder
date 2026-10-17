@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="g" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#059669"/>
+      <stop offset="0.55" stop-color="#10B981"/>
+      <stop offset="1" stop-color="#6EE7B7"/>
+    </linearGradient>
+    <radialGradient id="bg" cx="0.3" cy="0.2" r="1">
+      <stop offset="0" stop-color="#14231E"/>
+      <stop offset="1" stop-color="#080D0B"/>
+    </radialGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="9" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="116" fill="url(#bg)"/>
+  <rect x="8" y="8" width="496" height="496" rx="110" fill="none" stroke="#10B981" stroke-opacity="0.18" stroke-width="2"/>
+  <!-- N made of a connection path -->
+  <g filter="url(#glow)">
+    <path d="M160 356 V164 L352 356 V164" fill="none" stroke="url(#g)" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="160" cy="356" r="22" fill="#080D0B" stroke="#10B981" stroke-width="12"/>
+    <circle cx="352" cy="356" r="22" fill="#080D0B" stroke="#34D399" stroke-width="12"/>
+    <circle cx="160" cy="164" r="22" fill="#080D0B" stroke="#34D399" stroke-width="12"/>
+  </g>
+  <!-- nova spark at the end of the path -->
+  <path d="M352 112 C355 146 366 157 400 164 C366 171 355 182 352 216 C349 182 338 171 304 164 C338 157 349 146 352 112 Z" fill="#A7F3D0" filter="url(#glow)"/>
+</svg>

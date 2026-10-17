@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self' data: file:">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nova Connect</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="toast"></div>
+
+<section id="v-welcome" class="view">
+  <div class="center">
+    <img class="logo-big" src="../../assets/logo.svg" alt="Nova Connect">
+    <h1>Nova Connect</h1>
+    <p class="muted">لینک اشتراک خود را وارد کنید تا سرورها دریافت و بهترین گزینه پیشنهاد شود.</p>
+    <input id="subUrl" class="input" dir="ltr" placeholder="https://..." spellcheck="false" autocomplete="off">
+    <button id="addBtn" class="btn primary wide">افزودن و دریافت سرورها</button>
+    <div id="welcomeErr" class="err"></div>
+    <details class="help"><summary>راهنمای کوتاه</summary>
+      <p>۱) لینک اشتراک را از ارائه‌دهنده سرویس بگیرید.<br>۲) آن را در کادر بالا بچسبانید.<br>۳) پس از نمایش سرور پیشنهادی، دکمه «اتصال» را بزنید.</p>
+    </details>
+  </div>
+</section>
+
+<section id="v-home" class="view hidden">
+  <header><div class="brand"><img src="../../assets/logo.svg" alt=""><b>Nova Connect</b></div>
+    <button class="icon-btn" id="toSettings" title="تنظیمات">⚙</button></header>
+  <div class="center">
+    <div id="statusDot" class="dot"></div>
+    <h2 id="statusText">متصل نیست</h2>
+    <p id="statusMsg" class="muted small"></p>
+    <button id="mainBtn" class="power">اتصال</button>
+    <div class="card"><span class="label">سرور فعلی</span><div id="curName" class="row-main">—</div>
+      <div class="row-sub"><span id="curPing">—</span><span id="curState" class="muted"></span></div></div>
+    <div class="card rec"><span class="label">سرور پیشنهادی</span><div id="recName" class="row-main">—</div>
+      <div class="row-sub"><span id="recPing">—</span><span id="recNote" class="muted"></span></div></div>
+    <div class="stats"><div><span class="label">مدت اتصال</span><b id="dur">—</b></div><div><span class="label">دانلود</span><b id="down">—</b></div><div><span class="label">آپلود</span><b id="up">—</b></div></div>
+    <button id="toServers" class="btn wide">مشاهده فهرست سرورها</button>
+  </div>
+</section>
+
+<section id="v-servers" class="view hidden">
+  <header><button class="icon-btn" data-back>→</button><b>فهرست سرورها</b><span></span></header>
+  <div class="toolbar">
+    <button class="btn small" id="retest">بررسی مجدد پینگ‌ها</button>
+    <button class="btn small" id="refreshSub">به‌روزرسانی اشتراک</button>
+    <button class="btn small" id="sortBtn">مرتب‌سازی: پینگ</button>
+  </div>
+  <p id="meta" class="muted small pad"></p>
+  <div id="list" class="list"></div>
+</section>
+
+<section id="v-settings" class="view hidden">
+  <header><button class="icon-btn" data-back>→</button><b>تنظیمات</b><span></span></header>
+  <div class="list pad">
+    <label class="set"><span>اجرا هنگام ورود به ویندوز</span><input type="checkbox" data-k="autoStart"></label>
+    <label class="set"><span>کوچک‌شدن به System Tray</span><input type="checkbox" data-k="minimizeToTray"></label>
+    <label class="set"><span>اتصال خودکار هنگام شروع</span><input type="checkbox" data-k="autoConnect"></label>
+    <label class="set"><span>تم</span><select data-k="theme"><option value="dark">تاریک</option><option value="light">روشن</option></select></label>
+    <label class="set"><span>فاصله بررسی پینگ (ثانیه)</span><select data-k="pingInterval" data-num><option>30</option><option>45</option><option>60</option><option>120</option></select></label>
+    <label class="set"><span>تلاش‌های اتصال مجدد</span><select data-k="retries" data-num><option>2</option><option>3</option><option>4</option><option>5</option></select></label>
+    <button class="btn wide" id="showLogs">مشاهده لاگ‌های تشخیصی</button>
+    <pre id="logs" class="logs hidden" dir="ltr"></pre>
+    <button class="btn wide danger" id="rmSub">حذف اشتراک</button>
+    <button class="btn wide" id="quitBtn">خروج کامل</button>
+    <p class="muted small center-t">Nova Connect <span id="ver"></span> — مسیر شبکه: System Proxy</p>
+  </div>
+</section>
+<script src="app.js"></script>
+</body></html>
